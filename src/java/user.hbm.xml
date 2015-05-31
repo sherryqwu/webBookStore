@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="com.me.pojo.User" table="BookStore.user">
+    <id column="id" name="id" type="int">
+      <generator class="native"/>
+    </id>
+    <property column="userName" name="userName" type="string" unique="true"/>
+    <property column="passWord" name="passWord" type="string" unique="true"/>
+    <property column="email" name="email" type="string" unique="true"/>
+    <property column="phone" name="phone" type="string" unique="true"/>
+    <property column="identity" name="identity" type="int" unique="true"/>
+    <many-to-one name="cart" class="com.me.pojo.Cart" column="cartid" lazy="false"/>
+
+  </class>
+</hibernate-mapping>

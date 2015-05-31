@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="com.me.pojo.Address" table="BookStore.address">
+    <id column="addressid" name="addressID" type="int">
+      <generator class="native"/>
+    </id>
+    <property column="street1" name="street1" type="string" unique="false"/>
+    <property column="street2" name="street2" type="string" unique="false"/>
+    <property column="city" name="city" type="string" unique="false"/>
+    <property column="state" name="state" type="string" unique="false"/>
+    <property column="zip" name="zip" type="int" unique="false"/>
+    <property column="userid" name="userID" type="int" unique="true"/>
+  </class>
+</hibernate-mapping>
