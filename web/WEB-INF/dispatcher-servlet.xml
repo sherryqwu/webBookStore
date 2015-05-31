@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+    <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
+
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    <!-- one of the properties available; the maximum file size in bytes -->
+        <property name="maxUploadSize" value="1000000"/>
+    </bean>
+    
+    <!--
+    Most controllers will use the ControllerClassNameHandlerMapping above, but
+    for the index controller we are using ParameterizableViewController, so we must
+    define an explicit mapping for it.
+    -->
+    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="index.htm">indexController</prop>
+                <prop key="about.htm">aboutController</prop>
+                <prop key="category.htm">categoryController</prop>
+                <prop key="specials.htm">specialsController</prop>
+                <prop key="myaccount.htm">accountController</prop>
+                <prop key="register.htm">registerController</prop>
+                <prop key="details.htm">detailController</prop>
+                <prop key="contact.htm">contactController</prop>
+                <prop key="contactDetail.htm">contactDetailController</prop>
+                <prop key="addBook.htm">addBookController</prop>
+                <prop key="addToCart.htm">addToCartController</prop>
+                <prop key="cart.htm">viewCartController</prop>
+                <prop key="checkout.htm">checkoutController</prop>
+                <prop key="orderHistory.htm">orderHistoryController</prop>
+                <prop key="orderDetail.htm">orderDetailController</prop>
+                <prop key="manageAdd.htm">manageAddController</prop>
+                <prop key="pdf.htm">pdfController</prop>  
+                <prop key="logout.htm">logoutController</prop>
+
+            </props>
+        </property>
+    </bean>
+    <!--
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          p:prefix="/WEB-INF/jsp/"
+          p:suffix=".jsp" />
+
+    
+    The index controller.
+    -->
+    <bean name="indexController"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="index" />
+    
+                 
+     <bean id="aboutController" class="com.me.controller.AboutController"/>
+     <bean id="categoryController" class="com.me.controller.CategoryController"/>
+     <bean id="specialsController" class="com.me.controller.SpecialsController"/>
+     <bean id="accountController" class="com.me.controller.MyAccountController">
+        <property name="formView" value="myaccount"/>
+        <property name="successView" value="index"/>
+        <property name="commandName" value="userLogin"/>
+        <property name="commandClass" value="com.me.pojo.User"/>
+        <property name="validator">
+            <bean class="com.me.controller.MyAccountValidator"/></property>
+     </bean>
+        
+     <bean id="registerController" class="com.me.controller.RegisterController">
+        <property name="formView" value="register"/>
+        <property name="successView" value="index"/>
+        <property name="commandName" value="user"/>
+        <property name="commandClass" value="com.me.pojo.User"/>
+        <property name="validator">
+            <bean class="com.me.controller.RegisterValidator"/></property>
+        
+
+       <!--> <property name="validator"><bean class="com.yusuf.spring.controller.UserValidator"/> <-->
+    </bean>
+    <bean id="manageAddController" class="com.me.controller.ManageAddressController">
+        <property name="formView" value="address"/>
+        <property name="successView" value="address"/>
+        <property name="commandName" value="address"/>
+        <property name="commandClass" value="com.me.pojo.Address"/>
+    </bean>
+    
+     <bean id="logoutController" class="com.me.controller.LogoutController"/>
+     <bean id="pdfController" class="com.me.controller.PdfController"/>  
+     <bean id="detailController" class="com.me.controller.DetailsController"/>
+     <bean id="contactController" class="com.me.controller.ContactUsController"/>
+     <bean id="contactDetailController" class="com.me.controller.ContactDetailController"/>
+     <bean id="addToCartController" class="com.me.controller.AddToCartController"/>
+     <bean id="viewCartController" class="com.me.controller.ViewCartController"/>
+     <bean id="checkoutController" class="com.me.controller.CheckOutController"/>
+     <bean id="orderHistoryController" class="com.me.controller.OrderHistoryController"/>
+     <bean id="orderDetailController" class="com.me.controller.OrderDetailController"/>
+     <bean id="addBookController" class="com.me.controller.AddBookController">
+        <property name="formView" value="addNewBook"/>
+        <property name="successView" value="index"/>
+        <property name="commandName" value="book"/>
+        <property name="commandClass" value="com.me.pojo.Book"/>
+        <property name="validator">
+            <bean class="com.me.controller.AddBookValidator"/></property>
+     </bean> 
+
+     
+            
+       
+     <bean id="viewResolver"
+            class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+        <property name="viewClass">
+        <value>org.springframework.web.servlet.view.tiles2.TilesView</value>
+        </property>
+    </bean>
+  
+    
+    <bean id="tilesConfigurer"
+        class="org.springframework.web.servlet.view.tiles2.TilesConfigurer" >
+      <property name="definitions">
+      <list>
+      <value>/WEB-INF/tiles.xml</value>
+      </list>
+     </property>
+    </bean>
+
+</beans>
+

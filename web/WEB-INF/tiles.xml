@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    <definition name="base.definition" template="/WEB-INF/tiles/layout.jsp">
+        <put-attribute name="header" value="/WEB-INF/tiles/header.jsp"/>
+        <put-attribute name="body" value=""/>
+        <put-attribute name="rightContent" value="/WEB-INF/tiles/rightContent.jsp"/>
+    </definition>
+    
+    <definition name="index" extends="base.definition">
+         <put-attribute name="body" value="/WEB-INF/jsp/index.jsp"/>
+    </definition> 
+    <definition name="addNewBook" extends="base.definition">
+         <put-attribute name="body" value="/WEB-INF/jsp/addNewBook.jsp"/>
+    </definition> 
+    <definition name="cart" extends="base.definition">
+         <put-attribute name="body" value="/WEB-INF/jsp/cart.jsp"/>
+    </definition> 
+    <definition name="category" extends="base.definition">
+         <put-attribute name="body" value="/WEB-INF/jsp/category.jsp"/>
+    </definition> 
+    <definition name="checkout" extends="base.definition">
+         <put-attribute name="body" value="/WEB-INF/jsp/checkout.jsp"/>
+    </definition> 
+        <definition name="details" extends="base.definition">
+         <put-attribute name="body" value="/WEB-INF/jsp/details.jsp"/>
+    </definition> 
+    <definition name="myaccount" extends="base.definition">
+         <put-attribute name="body" value="/WEB-INF/jsp/myaccount.jsp"/>
+    </definition> 
+    <definition name="orderHistory" extends="base.definition">
+         <put-attribute name="body" value="/WEB-INF/jsp/orderHistory.jsp"/>
+    </definition> 
+    <definition name="register" extends="base.definition">
+         <put-attribute name="body" value="/WEB-INF/jsp/register.jsp"/>
+    </definition> 
+    <definition name="address" extends="base.definition">
+         <put-attribute name="body" value="/WEB-INF/jsp/address.jsp"/>
+    </definition>
+    <definition name="orderHistoryDetail" extends="base.definition">
+         <put-attribute name="body" value="/WEB-INF/jsp/orderHistoryDetail.jsp"/>
+    </definition> 
+    <definition name="specials" extends="base.definition">
+         <put-attribute name="body" value="/WEB-INF/jsp/specials.jsp"/>
+    </definition>
+    <definition name="error" extends="base.definition">
+         <put-attribute name="body" value="/WEB-INF/jsp/error.jsp"/>
+    </definition>               
+    <definition name="contact" extends="base.definition">
+         <put-attribute name="body" value="/WEB-INF/jsp/contact.jsp"/>
+    </definition> 
+    <definition name="success" extends="base.definition">
+         <put-attribute name="body" value="/WEB-INF/jsp/success.jsp"/>
+    </definition>     
+</tiles-definitions>
